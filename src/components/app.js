@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Nav from './navbar';
+/*
+A simple component that simply renders a NavBar component and the {props.children}
+passed in by the router
 
-// example class based component (smart component)
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    // init component state here
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+    // {this.props.children} in line 10
+*/
+const App = (props) =>
+  <div className="app">
+    <Nav />
+    {props.children}
+  </div>;
 
 export default App;
