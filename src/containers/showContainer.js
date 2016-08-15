@@ -41,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchPost(id));
     },
     updatePost: (post, id) => {
+      console.log(post);
       dispatch(updatePost(post, id));
     },
     deletePost: (id) => {

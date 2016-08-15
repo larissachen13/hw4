@@ -14,14 +14,22 @@ class ContentArea extends Component {
     if (e.keyCode === 13 && !e.shiftKey) {
       // change edit mode
       this.setState({ edit: false });
+      let updatedField;
+      console.log(this.props.field);
+      if (this.props.field === 'tags') {
+        updatedField = e.target.value.split(' ');
+      } else {
+        updatedField = e.target.value;
+      }
 
       // also update post when enter is pressed
       const updated = {
         ...this.props.post,
-        [this.props.field]: e.target.value,
+        [this.props.field]: updatedField,
       };
-
-      this.props.updatePost(updated, this.props.post._id);
+      console.log(updated);
+      console.log(this.props.post.id);
+      this.props.updatePost(updated, this.props.post.id);
     } else {
       this.setState({ text: e.target.value });
     }

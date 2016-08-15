@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+
+const tags = (posttags) => {
+  return posttags.join(' ');
+};
 const Index = (props) => {
   const postItems = props.posts.map((post) => {
     return (
       <div className="post-list-item" key={post.id}>
         <span> <Link className="link" to={`posts/${post.id}`}> {post.title} </Link> </span>
-        <span> {post.tags} </span>
+        <span> {tags(post.tags)} </span>
       </div>
       );
   });

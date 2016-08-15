@@ -2,6 +2,16 @@ import React from 'react';
 import { Link } from 'react-router';
 import ContentArea from '../components/content';
 
+const tags = (props) => {
+  let post;
+  if (props.post.tags.constructor === Array) {
+    post = { ...props.post, tags: props.post.tags.join(' ') };
+  } else {
+    post = props.post;
+  }
+  return post;
+};
+
 const Show = (props) => {
   return (
     <div className="post-item" id={props.post.id}>
@@ -18,7 +28,7 @@ const Show = (props) => {
             </h2>
           </li>
           <li>
-            <h3> <ContentArea post={props.post} className="post-tags"
+            <h3> <ContentArea post={tags(props)} className="post-tags"
               field="tags" updatePost={props.updatePost}
             /> </h3>
           </li>

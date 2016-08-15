@@ -16,7 +16,7 @@ const PostReducer = (state = initialState, action) => {
       // console.log(action.payload.response.data);
       return { ...state, posts: { ...state.posts, post: action.payload.response.data } };
     case ActionTypes.CREATE_POST:
-      return { ...state, posts: { ...state.posts, all: action.payload.response.data } };
+      return { ...state, posts: { ...state.posts, all: state.posts.all.concat(action.payload.response.data) } };
     case ActionTypes.UPDATE_POST:
       return { ...state, posts: { ...state.posts, post: action.payload } };
     case ActionTypes.DELETE_POST:

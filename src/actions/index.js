@@ -1,6 +1,8 @@
 import axios from 'axios';
-const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
+const ROOT_URL = 'https://hw5-express-blog.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
 const API_KEY = '?key=larissa_chen';
+import { browserHistory } from 'react-router';
 
 export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
@@ -41,21 +43,21 @@ export function fetchPost(id) {
 
 export function createPost(post) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/posts${API_KEY}`, post);
-    axios.get(`${ROOT_URL}/posts${API_KEY}`).then(response => {
-        // do something with response.data  (some json)
+    axios.post(`${ROOT_URL}/posts${API_KEY}`, post).then(response => {
       dispatch({
         type: ActionTypes.CREATE_POST,
         payload: { response },
       });
+      browserHistory.push('/');
     }).catch(error => {
-  // hit an error do something else!
+      // ///
     });
   };
 }
 
 export function updatePost(post, id) {
   return (dispatch) => {
+    console.log(post);
     axios.put(`${ROOT_URL}/posts/${id}${API_KEY}`, post);
     dispatch({
       type: ActionTypes.UPDATE_POST,
