@@ -18,6 +18,8 @@ class ShowContainer extends Component {
   render() {
     if (this.props.post === null) {
       return (<div> Loading..</div>);
+    } else if (this.props.error === true) {
+      return (<div> Sorry! There was an error in fetching the blog posts </div>);
     } else {
       console.log(this.props.post.title);
       return (
@@ -32,6 +34,7 @@ class ShowContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     post: state.posts.post,
+    error: state.error,
   };
 };
 

@@ -25,11 +25,17 @@ class IndexContainer extends Component {
     // console.log(this.props.posts);
   }
   render() {
-    return (
-      <div>
-        <Index posts={this.props.posts} />
-      </div>
-    );
+    if (this.props.posts === undefined) {
+      return <div> Loading... </div>;
+    } else if (this.props.error === true) {
+      return (<div> Sorry! There was an error in fetching the blog posts </div>);
+    } else {
+      return (
+        <div>
+          <Index posts={this.props.posts} />
+        </div>
+      );
+    }
   }
 }
 
@@ -37,6 +43,7 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     posts: state.posts.all,
+    error: state.error,
   };
 };
 
