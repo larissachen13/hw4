@@ -19,5 +19,12 @@
     <Route path="posts/:id" component={ShowContainer} />
     </Route>`
   The id parameter in the URL specifies which note should be shown 
+  
+  
+  ## Extra Credit 
+  Error Handling: Added a `state.error` which is set to be true anytime the `ActionType.ERROR` is dispatched. This action is dispatched inside of any catch of an error during the AJAX call. Each component and container checks if an error is flagged, and if so it returns an error message: "<div> Sorry! There was an error in fetching the blog posts </div>" 
+  
+  InputForm Validation: 
+  Give the new component a formError state. If any of the fields are not filled out, set that state to true and Display the error and do not call the createPost action
 
 
