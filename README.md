@@ -1,1 +1,3 @@
-# js-starter with react react-router babel sass and eslint
+# Extra Credit Attempted: 
+
+Tags are stored as an array 
